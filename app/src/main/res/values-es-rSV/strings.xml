@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">edsCV</string>
+
+    <string name="AuthTAG" translatable="false">FireAuth Service</string>
+    <string name="AuthError" translatable="false">Autenticacion fallida</string>
+    <string name="AuthRegistered" translatable="false">El usuario fue registrado con exito.</string>
+    <string name="authSuccess" translatable="false">Autenticacion exitosa</string>
+
+    <string name="signHeader" translatable="false">Registrarse</string>
+    <string name="logHeader" translatable="false">Iniciar Sesión</string>
+    <string name="userDisplayName" translatable="false">Nombre de Usuario</string>
+    <string name="userEmail" translatable="false">Correo Electrónico</string>
+    <string name="userPassword" translatable="false">Contraseña</string>
+    <string name="userForgotPassword" translatable="false">¿Olvidaste tu contraseña?</string>
+    <string name="UserLogIn" translatable="false">¿Ya tienes una cuenta?</string>
+    <string name="UserSignIn" translatable="false">¿Aún no tienes una cuenta?</string>
+    <string name="btnLog" translatable="false">Iniciar Sesión</string>
+    <string name="btnSign" translatable="false">Registrarse</string>
+    <string name="emptyFields" translatable="false">No dejar campos vacios</string>
+
+
+    <string name="menu_gallery" translatable="false">Galería</string>
+</resources>

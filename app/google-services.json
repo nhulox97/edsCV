@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "527522486099",
+    "firebase_url": "https://edscv-60d32.firebaseio.com",
+    "project_id": "edscv-60d32",
+    "storage_bucket": "edscv-60d32.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:527522486099:android:5debd843377526a6",
+        "android_client_info": {
+          "package_name": "com.nhulox.edscv"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "527522486099-4ga5ubj08dij455bpgnmli8ckun8v2u4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nhulox.edscv",
+            "certificate_hash": "7d548d76bf010998cb3d6097325aadf9d4d733bb"
+          }
+        },
+        {
+          "client_id": "527522486099-t4hbofk1ge1f3nmc3q0atns6o5nfluls.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZm3SnUX0dvp4TisEpncz1JtSoaWkihkY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "527522486099-t4hbofk1ge1f3nmc3q0atns6o5nfluls.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
