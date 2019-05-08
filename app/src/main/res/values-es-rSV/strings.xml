@@ -18,7 +18,11 @@
     <string name="btnLog" translatable="false">Iniciar Sesión</string>
     <string name="btnSign" translatable="false">Registrarse</string>
     <string name="emptyFields" translatable="false">No dejar campos vacios</string>
+    <string name="logOut" translatable="false">Cerrar sesion</string>
 
 
     <string name="menu_gallery" translatable="false">Galería</string>
+    <string name="menu_filters" translatable="false">Filters</string>
+    <string name="menu_profile" translatable="false">Perfil</string>
+    <string name="menu_share" translatable="false">Acerca de</string>
 </resources>

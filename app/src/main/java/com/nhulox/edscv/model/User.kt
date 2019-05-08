@@ -15,6 +15,8 @@ class User {
         this.displayName = displayName
     }
 
+    constructor()
+
     fun toMap(): Map<String, Any>{
         val result = HashMap<String, Any>()
         result["uid"] = uid!!

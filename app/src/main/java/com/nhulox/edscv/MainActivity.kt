@@ -70,5 +70,14 @@ class MainActivity : AppCompatActivity(), UsersFragmentListener{
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        userIsLogged()
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        userIsLogged()
+    }
 
 }

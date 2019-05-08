@@ -9,14 +9,37 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.view.MenuItem
 import android.support.v4.widget.DrawerLayout
 import android.support.design.widget.NavigationView
+import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.Menu
+import android.widget.Filter
+import android.widget.TextView
+import com.google.android.gms.tasks.OnSuccessListener
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.DocumentSnapshot
+import com.google.firebase.firestore.FirebaseFirestore
 import com.nhulox.edscv.controller.FireAuth
+import com.nhulox.edscv.model.User
+import com.nhulox.edscv.view.AboutUs
+import com.nhulox.edscv.view.Filters
+import com.nhulox.edscv.view.Gallery
+import com.nhulox.edscv.view.Profile
 
 class NavBarMainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
+    private lateinit var profileF: Fragment
+    private lateinit var filtersF: Fragment
+    private lateinit var galleryF: Fragment
+    private lateinit var aboutF: Fragment
+
     private lateinit var fireAuth: FireAuth
+    private lateinit var auth: FirebaseAuth
+    private lateinit var firestore: FirebaseFirestore
+
+    internal lateinit var displayName: TextView
+    internal lateinit var email: TextView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,12 +48,14 @@ class NavBarMainActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
         setSupportActionBar(toolbar)
 
         fireAuth = FireAuth(applicationContext)
+        auth = FirebaseAuth.getInstance()
+        firestore = FirebaseFirestore.getInstance()
 
-        val fab: FloatingActionButton = findViewById(R.id.fab)
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-        }
+        filtersF = Filters()
+        profileF = Profile()
+        galleryF = Gallery()
+        aboutF = AboutUs()
+
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
         val toggle = ActionBarDrawerToggle(
@@ -76,27 +101,42 @@ class NavBarMainActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
-            R.id.nav_home -> {
-                // Handle the camera action
+            R.id.nav_filters -> {
+                val manager = supportFragmentManager
+                val transaction = manager.beginTransaction()
+                transaction.replace(R.id.containerNB, filtersF)
+                transaction.addToBackStack(null)
+                transaction.commit()
             }
             R.id.nav_gallery -> {
-
+                val manager = supportFragmentManager
+                val transaction = manager.beginTransaction()
+                transaction.replace(R.id.containerNB, galleryF)
+                transaction.addToBackStack(null)
+                transaction.commit()
             }
-            R.id.nav_slideshow -> {
 
+            R.id.nav_profile -> {
+                val manager = supportFragmentManager
+                val transaction = manager.beginTransaction()
+                transaction.replace(R.id.containerNB, profileF)
+                transaction.addToBackStack(null)
+                transaction.commit()
             }
-            R.id.nav_tools -> {
+            R.id.nav_about -> {
+                val manager = supportFragmentManager
+                val transaction = manager.beginTransaction()
+                transaction.replace(R.id.containerNB, aboutF)
+                transaction.addToBackStack(null)
+                transaction.commit()
+            }
 
-            }
-            R.id.nav_share -> {
-
-            }
-            R.id.nav_send -> {
-
-            }
         }
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
     }
+
+
+
 }

@@ -13,6 +13,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
 import com.nhulox.edscv.NavBarMainActivity
 
 import com.nhulox.edscv.R
@@ -35,15 +36,11 @@ class LogIn : Fragment(), UsersFragmentListener {
     private var password: EditText? = null
     private var btnLogIn: Button? = null
 
-
-    private lateinit var fireAuth: FireAuth
+    private lateinit var auth: FirebaseAuth
 
     private var statusListener: UsersFragmentListener? = null
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_log_in, container, false)
@@ -52,13 +49,11 @@ class LogIn : Fragment(), UsersFragmentListener {
         password = view.findViewById(R.id.passwordL)
         btnLogIn = view.findViewById(R.id.btnLogIn)
 
-        fireAuth = FireAuth(context!!)
+        auth = FirebaseAuth.getInstance()
 
         btnLogIn!!.setOnClickListener { logInUser() }
 
-        signInTV!!.setOnClickListener{
-            statusListener!!.getActualFragment("SignIn")
-        }
+        signInTV!!.setOnClickListener{ statusListener!!.getActualFragment("SignIn") }
 
         //userIsLogged()
 
@@ -78,21 +73,27 @@ class LogIn : Fragment(), UsersFragmentListener {
         val emailT = email!!.text.toString()
         val passwordT = password!!.text.toString()
 
-       try {
-           if (!TextUtils.isEmpty(emailT) && !TextUtils.isEmpty(passwordT)){
-               if (fireAuth.logInWithEmailAndPassword(emailT, passwordT)) {
-                   Toast.makeText(context, "Inside", Toast.LENGTH_SHORT).show()
-                   startActivity(Intent(context, NavBarMainActivity::class.java))
+       if (!TextUtils.isEmpty(emailT) && !TextUtils.isEmpty(passwordT)){
+           auth.signInWithEmailAndPassword(emailT, passwordT)
+               .addOnCompleteListener { task ->
+                   if (task.isSuccessful) {
+                       Log.d("${R.string.AuthTAG}", "logInWithEmail:success")
+
+                       Toast.makeText(context, "${context!!.resources.getString(R.string.authSuccess)}",
+                           Toast.LENGTH_SHORT).show()
+
+                       val intent = Intent(context, NavBarMainActivity::class.java)
+                       startActivity(intent)
+                   } else {
+                       Toast.makeText(context, "${context!!.resources.getString(R.string.AuthError)}",
+                           Toast.LENGTH_SHORT).show()
+                   }
                }
-               Toast.makeText(context, "Outside", Toast.LENGTH_SHORT).show()
-           }
-           else{
-               Toast.makeText(context, "${context!!.resources.getString(R.string.emptyFields)}",
-                   Toast.LENGTH_SHORT).show()
-           }
-       }catch (e: Exception){
-           Log.d("LogIn", "Esta es: $e")
        }
+       else
+           Toast.makeText(context, "${context!!.resources.getString(R.string.emptyFields)}", Toast.LENGTH_SHORT).show()
     }
+
+
 
 }

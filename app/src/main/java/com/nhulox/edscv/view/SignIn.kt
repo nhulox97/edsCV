@@ -39,11 +39,8 @@ class SignIn() : Fragment() {
     private var password: EditText? = null
     private var logInTV: TextView? = null
 
-    private var txtUserName: String? = null
-    private var txtEmail: String? = null
-    private var txtPassword: String? = null
-
-    private lateinit var fireAuth: FireAuth
+    private lateinit var auth: FirebaseAuth
+    private lateinit var firestoreDB: FirebaseFirestore
 
     private var statusListener: UsersFragmentListener? = null
 
@@ -60,7 +57,8 @@ class SignIn() : Fragment() {
         password = view.findViewById(R.id.passwordS)
         logInTV = view.findViewById(R.id.logInFragment)
 
-        fireAuth = FireAuth(context!!)
+        auth = FirebaseAuth.getInstance()
+        firestoreDB = FirebaseFirestore.getInstance()
 
         //Button onClick event
         button!!.setOnClickListener { registerUser() }
@@ -73,20 +71,38 @@ class SignIn() : Fragment() {
 
 
     private fun registerUser(){
-        txtUserName = username!!.text.toString()
-        txtEmail = email!!.text.toString()
-        txtPassword = password!!.text.toString()
+        val txtUserName = username!!.text.toString()
+        val txtEmail = email!!.text.toString()
+        val txtPassword = password!!.text.toString()
 
         if (!TextUtils.isEmpty(txtUserName) && !TextUtils.isEmpty(txtEmail) && !TextUtils.isEmpty(txtPassword)){
-            if (fireAuth.signInWithEmailAndPassword(txtEmail!!, txtPassword!!, txtUserName!!)){
-                val intent = Intent(context, NavBarMainActivity::class.java)
-                startActivity(intent)
-            }
-        }else{
+            auth.createUserWithEmailAndPassword(txtEmail, txtPassword)
+                .addOnCompleteListener {task ->
+                    if (task.isSuccessful){
+
+                        val registeredUser = auth.currentUser
+                        val user = User(registeredUser!!.uid, txtEmail, txtUserName).toMap()
+
+                        firestoreDB.collection("users").document(registeredUser.uid)
+                            .set(user).addOnSuccessListener{ _ ->
+                                Log.d("${R.string.AuthTAG}",
+                                    "DocumentSnapshot written with ID: ${registeredUser.uid}")
+
+                                Toast.makeText(context, "${context!!.resources.getString(R.string.authSuccess)}",
+                                    Toast.LENGTH_LONG).show()
+                                val intent = Intent(context, NavBarMainActivity::class.java)
+                                startActivity(intent)
+                            }
+                    }
+                    else{
+                        Log.w("${R.string.AuthTAG}", "createUserWithEmail:failure", task.exception)
+                        Toast.makeText(context, "${context!!.resources.getString(R.string.AuthError)}",
+                            Toast.LENGTH_SHORT).show()
+                    }
+                }
+        }else
             Toast.makeText(context, "${context!!.resources.getString(R.string.emptyFields)}",
                 Toast.LENGTH_SHORT).show()
-        }
-
     }
 
     override fun onAttach(context: Context?) {
