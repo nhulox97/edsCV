@@ -35,6 +35,7 @@
     <string name="menu_profile" translatable="false">Profile</string>
     <string name="menu_share" translatable="false">About us</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!--string resources for NVMA/fragments -->
+    <string name="fragment_filters" translatable="false">The filters and extras using openCV will go here</string>
+    <string name="fragment_gallery" translatable="false">The images captured using edsVC will go here</string>
 </resources>

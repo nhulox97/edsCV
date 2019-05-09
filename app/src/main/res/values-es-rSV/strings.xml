@@ -25,4 +25,8 @@
     <string name="menu_filters" translatable="false">Filters</string>
     <string name="menu_profile" translatable="false">Perfil</string>
     <string name="menu_share" translatable="false">Acerca de</string>
+
+
+    <string name="fragment_filters" translatable="false">Los filtros y extras utilizando openCV irán aquí</string>
+    <string name="fragment_gallery" translatable="false">Las imagenes capturadas utilizando edsCV irán aquí</string>
 </resources>

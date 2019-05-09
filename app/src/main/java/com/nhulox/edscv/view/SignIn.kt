@@ -19,7 +19,6 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.nhulox.edscv.NavBarMainActivity
 
 import com.nhulox.edscv.R
-import com.nhulox.edscv.controller.FireAuth
 import com.nhulox.edscv.model.User
 
 // TODO: Rename parameter arguments, choose names that match
@@ -39,8 +38,12 @@ class SignIn() : Fragment() {
     private var password: EditText? = null
     private var logInTV: TextView? = null
 
+    private var userNameTx: String =""
+    private var emailTx: String = ""
+    private var passwordTx: String = ""
+
     private lateinit var auth: FirebaseAuth
-    private lateinit var firestoreDB: FirebaseFirestore
+    private lateinit var fireStore: FirebaseFirestore
 
     private var statusListener: UsersFragmentListener? = null
 
@@ -58,7 +61,7 @@ class SignIn() : Fragment() {
         logInTV = view.findViewById(R.id.logInFragment)
 
         auth = FirebaseAuth.getInstance()
-        firestoreDB = FirebaseFirestore.getInstance()
+        fireStore = FirebaseFirestore.getInstance()
 
         //Button onClick event
         button!!.setOnClickListener { registerUser() }
@@ -83,7 +86,7 @@ class SignIn() : Fragment() {
                         val registeredUser = auth.currentUser
                         val user = User(registeredUser!!.uid, txtEmail, txtUserName).toMap()
 
-                        firestoreDB.collection("users").document(registeredUser.uid)
+                        fireStore.collection("users").document(registeredUser.uid)
                             .set(user).addOnSuccessListener{ _ ->
                                 Log.d("${R.string.AuthTAG}",
                                     "DocumentSnapshot written with ID: ${registeredUser.uid}")
@@ -112,6 +115,27 @@ class SignIn() : Fragment() {
         }catch (e: ClassCastException){
             throw java.lang.ClassCastException("$context you must implement the interface")
         }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        emailTx = email!!.text.toString()
+        userNameTx = username!!.text.toString()
+        passwordTx = password!!.text.toString()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (!TextUtils.isEmpty(emailTx) && !TextUtils.isEmpty(userNameTx) && !TextUtils.isEmpty(passwordTx)){
+            email!!.setText(emailTx)
+            username!!.setText(userNameTx)
+            password!!.setText(passwordTx)
+        }
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        statusListener = null
     }
 
 }

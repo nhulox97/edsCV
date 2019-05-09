@@ -36,6 +36,11 @@ class LogIn : Fragment(), UsersFragmentListener {
     private var password: EditText? = null
     private var btnLogIn: Button? = null
 
+    private var emailTx: String = ""
+    private var passwordTx: String = ""
+
+
+
     private lateinit var auth: FirebaseAuth
 
     private var statusListener: UsersFragmentListener? = null
@@ -94,6 +99,22 @@ class LogIn : Fragment(), UsersFragmentListener {
            Toast.makeText(context, "${context!!.resources.getString(R.string.emptyFields)}", Toast.LENGTH_SHORT).show()
     }
 
+    override fun onDetach() {
+        super.onDetach()
+        statusListener = null
+    }
 
+    override fun onResume() {
+        super.onResume()
+        if ( emailTx != null && passwordTx != null ){
+            email!!.setText(emailTx)
+            password!!.setText(passwordTx)
+        }
+    }
 
+    override fun onStop() {
+        super.onStop()
+        emailTx = email!!.text.toString()
+        passwordTx = password!!.text.toString()
+    }
 }

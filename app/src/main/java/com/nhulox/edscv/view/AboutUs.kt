@@ -32,13 +32,13 @@ class AboutUs : Fragment() {
         val button = view.findViewById<Button>(R.id.btnGit)
 
         button!!.setOnClickListener { v->
-            openLink(v)
+            openLink()
         }
 
         return view
     }
 
-    private fun openLink(view: View?){
+    private fun openLink(){
         val uri: Uri = Uri.parse("https://github.com/nhulox97/edsCV.git")
         val intent = Intent(Intent.ACTION_VIEW, uri)
         startActivity(intent)

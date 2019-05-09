@@ -60,9 +60,9 @@ class Profile : Fragment() {
         val currentUser = auth.currentUser
         //displayNameTV.text = currentUser!!.displayName
         emailTV.text = currentUser!!.email
-        var user: User? = User()
+        var user: User?
         val reference = firestore.collection("users").
-            document("${currentUser!!.uid}")
+            document("${currentUser.uid}")
         try {
             reference.get().addOnSuccessListener { documentSnapshot ->
                 user = documentSnapshot.toObject(User::class.java)
@@ -71,7 +71,7 @@ class Profile : Fragment() {
 
         }
         catch (e: FirebaseFirestoreException){
-            Log.d("Error Actual", "Error $e")
+            Log.d("Error Actual", "Error: $e")
         }
     }
 
