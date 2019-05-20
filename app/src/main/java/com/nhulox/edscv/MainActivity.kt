@@ -11,14 +11,16 @@ import android.widget.Button
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.nhulox.edscv.controller.FireAuth
+import com.nhulox.edscv.view.ForgotPassword
 import com.nhulox.edscv.view.LogIn
 import com.nhulox.edscv.view.SignIn
 import com.nhulox.edscv.view.UsersFragmentListener
 
 class MainActivity : AppCompatActivity(), UsersFragmentListener{
 
-    private lateinit var signIn: Fragment
+    private lateinit var signIn: SignIn
     private lateinit var logIn: LogIn
+    private lateinit var forgotPassword: ForgotPassword
     private lateinit var fireAuth: FireAuth
 
     private lateinit var auth: FirebaseAuth
@@ -30,6 +32,7 @@ class MainActivity : AppCompatActivity(), UsersFragmentListener{
 
         signIn = SignIn()
         logIn = LogIn()
+        forgotPassword = ForgotPassword()
 
         //auth = FirebaseAuth.getInstance()
 
@@ -49,10 +52,11 @@ class MainActivity : AppCompatActivity(), UsersFragmentListener{
     }
 
     private fun setViewFragment(option: String){
-        if (option == "LogIn")
-            replaceFragment(logIn)
-        else if (option == "SignIn")
-            replaceFragment(signIn)
+        when (option) {
+            "LogIn" -> replaceFragment(logIn)
+            "SignIn" -> replaceFragment(signIn)
+            "ForgotPassword" -> replaceFragment(forgotPassword)
+        }
     }
 
     private fun replaceFragment(fragment: Fragment){

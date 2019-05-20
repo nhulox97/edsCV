@@ -13,6 +13,7 @@ import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.Menu
+import android.widget.Button
 import android.widget.Filter
 import android.widget.TextView
 import com.google.android.gms.tasks.OnSuccessListener
@@ -36,10 +37,6 @@ class NavBarMainActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
     private lateinit var fireAuth: FireAuth
     private lateinit var auth: FirebaseAuth
     private lateinit var firestore: FirebaseFirestore
-
-    internal lateinit var displayName: TextView
-    internal lateinit var email: TextView
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,6 +62,7 @@ class NavBarMainActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
         toggle.syncState()
 
         navView.setNavigationItemSelectedListener(this)
+
     }
 
     override fun onBackPressed() {

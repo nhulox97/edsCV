@@ -13,13 +13,14 @@
     <string name="userDisplayName" translatable="false">Username</string>
     <string name="userEmail" translatable="false">eMail</string>
     <string name="userPassword" translatable="false">Password</string>
-    <string name="UserLogIn" translatable="false">Are you already have an account?</string>
+    <string name="UserLogIn" translatable="false">I already have an account</string>
     <string name="userForgotPassword" translatable="false">Forgot your password?</string>
-    <string name="UserSignIn" translatable="false">You do not have an account yet?</string>
+    <string name="UserSignIn" translatable="false">Create an account</string>
     <string name="btnLog" translatable="false">Log In</string>
     <string name="btnSign" translatable="false">Sign In</string>
     <string name="emptyFields" translatable="false">Do not leave empty fields</string>
     <string name="logOut" translatable="false">Log Out</string>
+    <string name="Passwordthree" translatable="false">Next</string>
 
     <!--string translatable resources for NavBarMainActivity-->
     <string name="title_activity_nav_bar_main" translatable="false">NavBarMainActivity</string>
@@ -35,7 +36,13 @@
     <string name="menu_profile" translatable="false">Profile</string>
     <string name="menu_share" translatable="false">About us</string>
 
+    <string name="Password" translatable="false">Recover Password</string>
+    <string name="Passwordtwo" translatable="false">Recover</string>
+
     <!--string resources for NVMA/fragments -->
     <string name="fragment_filters" translatable="false">The filters and extras using openCV will go here</string>
     <string name="fragment_gallery" translatable="false">The images captured using edsVC will go here</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

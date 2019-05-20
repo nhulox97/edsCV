@@ -13,12 +13,17 @@
     <string name="userEmail" translatable="false">Correo Electrónico</string>
     <string name="userPassword" translatable="false">Contraseña</string>
     <string name="userForgotPassword" translatable="false">¿Olvidaste tu contraseña?</string>
-    <string name="UserLogIn" translatable="false">¿Ya tienes una cuenta?</string>
-    <string name="UserSignIn" translatable="false">¿Aún no tienes una cuenta?</string>
+    <string name="UserLogIn" translatable="false">Ya tengo una cuenta</string>
+    <string name="UserSignIn" translatable="false">Crear una cuenta</string>
     <string name="btnLog" translatable="false">Iniciar Sesión</string>
     <string name="btnSign" translatable="false">Registrarse</string>
     <string name="emptyFields" translatable="false">No dejar campos vacios</string>
     <string name="logOut" translatable="false">Cerrar sesion</string>
+
+    <string name="Password" translatable="false">Recuperar Contraseña</string>
+    <string name="Passwordtwo" translatable="false">Recuperar</string>
+    <string name="Passwordthree" translatable="false">Siguiente</string>
+
 
 
     <string name="menu_gallery" translatable="false">Galería</string>
@@ -26,6 +31,7 @@
     <string name="menu_profile" translatable="false">Perfil</string>
     <string name="menu_share" translatable="false">Acerca de</string>
 
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="fragment_filters" translatable="false">Los filtros y extras utilizando openCV irán aquí</string>
     <string name="fragment_gallery" translatable="false">Las imagenes capturadas utilizando edsCV irán aquí</string>

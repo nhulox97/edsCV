@@ -35,6 +35,7 @@ class LogIn : Fragment(), UsersFragmentListener {
     private var email: EditText? = null
     private var password: EditText? = null
     private var btnLogIn: Button? = null
+    private var forgotTV: TextView? = null
 
     private var emailTx: String = ""
     private var passwordTx: String = ""
@@ -50,6 +51,7 @@ class LogIn : Fragment(), UsersFragmentListener {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_log_in, container, false)
         signInTV = view.findViewById(R.id.signInFragment)
+        forgotTV = view.findViewById(R.id.forgotPassword)
         email = view.findViewById(R.id.emailL)
         password = view.findViewById(R.id.passwordL)
         btnLogIn = view.findViewById(R.id.btnLogIn)
@@ -59,6 +61,7 @@ class LogIn : Fragment(), UsersFragmentListener {
         btnLogIn!!.setOnClickListener { logInUser() }
 
         signInTV!!.setOnClickListener{ statusListener!!.getActualFragment("SignIn") }
+        forgotTV!!.setOnClickListener { statusListener!!.getActualFragment("ForgotPassword") }
 
         //userIsLogged()
 
