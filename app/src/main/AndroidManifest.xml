@@ -27,8 +27,8 @@
             android:required="false"/>
 
     <application
-            android:allowBackup="true"
-            android:icon="@drawable/eye_scan_l"
+            android:allowBackup="false"
+            android:icon="@drawable/focus"
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
@@ -46,10 +46,15 @@
                 android:name=".MainActivity"
                 android:theme="@style/SplashTheme">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+               <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+        <activity
+                android:name=".DetectorActivity"
+                android:label="@string/activity_name_detection"
+                android:screenOrientation="portrait">
         </activity>
     </application>
 

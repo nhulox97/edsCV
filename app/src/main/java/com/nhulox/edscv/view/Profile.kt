@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.OnSuccessListener
@@ -18,6 +19,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException
 
 import com.nhulox.edscv.R
 import com.nhulox.edscv.model.User
+import java.lang.ClassCastException
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -31,6 +33,9 @@ class Profile : Fragment() {
 
     private lateinit var displayNameTV: TextView
     private lateinit var emailTV: TextView
+    private lateinit var btnUpdate: Button
+
+    private var editListener: EditListener? = null
 
     private lateinit var auth: FirebaseAuth
     private lateinit var firestore: FirebaseFirestore
@@ -44,9 +49,12 @@ class Profile : Fragment() {
 
         displayNameTV = view.findViewById(R.id.txtName)
         emailTV = view.findViewById(R.id.txtEmail)
+        btnUpdate = view.findViewById(R.id.btnEdit)
 
         auth = FirebaseAuth.getInstance()
         firestore = FirebaseFirestore.getInstance()
+
+        btnUpdate.setOnClickListener { editListener!!.exchangeUserFragment("edit") }
 
         return view
     }
@@ -73,6 +81,27 @@ class Profile : Fragment() {
         catch (e: FirebaseFirestoreException){
             Log.d("Error Actual", "Error: $e")
         }
+    }
+
+    override fun onAttach(context: Context?) {
+        super.onAttach(context)
+
+        try {
+            editListener = context as EditListener
+        }catch (e: ClassCastException){
+            throw java.lang.ClassCastException("$context you must implement the interface")
+        }
+
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        editListener = null
+    }
+
+    override fun onResume() {
+        super.onResume()
+        getUserData()
     }
 
 }

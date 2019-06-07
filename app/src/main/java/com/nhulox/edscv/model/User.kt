@@ -15,6 +15,10 @@ class User {
         this.displayName = displayName
     }
 
+    constructor(displayName: String){
+        this.displayName = displayName
+    }
+
     constructor()
 
     fun toMap(): Map<String, Any>{

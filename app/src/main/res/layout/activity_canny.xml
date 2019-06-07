@@ -10,8 +10,8 @@
             opencv:layout_constraintStart_toStartOf="parent"
             opencv:layout_constraintBottom_toBottomOf="parent"
             opencv:layout_constraintTop_toTopOf="parent"
-            android:layout_width="550dp"
-            android:layout_height="355dp">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
         <org.opencv.android.JavaCameraView
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
@@ -20,15 +20,5 @@
                 opencv:show_fps="true"
                 opencv:camera_id="any" />
     </FrameLayout>
-
-    <Button
-            opencv:layout_constraintStart_toEndOf="@+id/frame"
-            android:id="@+id/saveFrame"
-            opencv:layout_constraintTop_toTopOf="parent"
-            android:layout_marginLeft="10dp"
-            opencv:layout_constraintBottom_toBottomOf="parent"
-            android:layout_width="60dp"
-            android:background="@drawable/ic_profile"
-            android:layout_height="60dp" />
 
 </android.support.constraint.ConstraintLayout>

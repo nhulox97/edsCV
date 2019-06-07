@@ -22,17 +22,15 @@ import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import com.nhulox.edscv.controller.FireAuth
 import com.nhulox.edscv.model.User
-import com.nhulox.edscv.view.AboutUs
-import com.nhulox.edscv.view.Filters
-import com.nhulox.edscv.view.Gallery
-import com.nhulox.edscv.view.Profile
+import com.nhulox.edscv.view.*
 
-class NavBarMainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class NavBarMainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, EditListener {
 
     private lateinit var profileF: Fragment
     private lateinit var filtersF: Fragment
     private lateinit var galleryF: Fragment
     private lateinit var aboutF: Fragment
+    private lateinit var editProfileF: Fragment
 
     private lateinit var fireAuth: FireAuth
     private lateinit var auth: FirebaseAuth
@@ -52,6 +50,9 @@ class NavBarMainActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
         profileF = Profile()
         galleryF = Gallery()
         aboutF = AboutUs()
+        editProfileF = EditProfileFragment()
+
+        startFragment()
 
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
@@ -63,6 +64,14 @@ class NavBarMainActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
 
         navView.setNavigationItemSelectedListener(this)
 
+    }
+
+    private fun startFragment(){
+        val manager = supportFragmentManager
+        val transaction = manager.beginTransaction()
+        transaction.replace(R.id.containerNB, filtersF)
+        transaction.addToBackStack(null)
+        transaction.commit()
     }
 
     override fun onBackPressed() {
@@ -135,6 +144,25 @@ class NavBarMainActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
         return true
     }
 
+    override fun exchangeUserFragment(fragment: String) {
+        super.exchangeUserFragment(fragment)
+        when (fragment){
+            "edit" ->{
+                val manager = supportFragmentManager
+                val transaction = manager.beginTransaction()
+                transaction.replace(R.id.containerNB, editProfileF)
+                transaction.addToBackStack(null)
+                transaction.commit()
+            }
+            "profile"->{
+                val manager = supportFragmentManager
+                val transaction = manager.beginTransaction()
+                transaction.replace(R.id.containerNB, profileF)
+                transaction.addToBackStack(null)
+                transaction.commit()
+            }
+        }
+    }
 
 
 }

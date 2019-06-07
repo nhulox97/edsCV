@@ -48,9 +48,9 @@ class ForgotPassword() : Fragment() {
     private fun sendEmailRecoveryPassword(email: String){
         auth!!.sendPasswordResetEmail(email).addOnCompleteListener { task ->
             if (task.isSuccessful)
-                Toast.makeText(context, "Check email to reset your password!", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, context!!.resources.getText(R.string.emailSuccess), Toast.LENGTH_LONG).show()
             else
-                Toast.makeText(context, "Fail to send reset password email!", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, context!!.resources.getText(R.string.emailError), Toast.LENGTH_LONG).show()
         }
 
     }

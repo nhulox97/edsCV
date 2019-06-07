@@ -6,6 +6,6 @@
         <bitmap
                 android:gravity="center"
                 
-                android:src="@drawable/tensorflow"/>
+                android:src="@drawable/focus_splash"/>
     </item>
 </layer-list>

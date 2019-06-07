@@ -19,12 +19,15 @@
     <string name="btnSign" translatable="false">Registrarse</string>
     <string name="emptyFields" translatable="false">No dejar campos vacios</string>
     <string name="logOut" translatable="false">Cerrar sesion</string>
+    <string name="emailSuccess" translatable="false">Revisa tu correo electrónico para cambiar tu contraseña</string>
+    <string name="emailError" translatable="false">Error al enviar correo electrónico de restablecer contraseña</string>
+    <string name="edt" translatable="false">Editar Perfil</string>
 
     <string name="Password" translatable="false">Recuperar Contraseña</string>
     <string name="Passwordtwo" translatable="false">Recuperar</string>
     <string name="Passwordthree" translatable="false">Siguiente</string>
 
-
+    <string name="update" translatable="false">Actualizar</string>
 
     <string name="menu_gallery" translatable="false">Galería</string>
     <string name="menu_filters" translatable="false">Filters</string>

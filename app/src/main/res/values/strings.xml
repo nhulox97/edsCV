@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">edsCV</string>
 
+    <string name="description_info">Info</string>
+    <string name="request_permission">This sample needs camera permission.</string>
+    <string name="camera_error">This device doesn\'t support Camera2 API.</string>
+
     <!--string translatable resources for FireAuth-->
     <string name="AuthRegistered" translatable="false">The user was successfully registered</string>
     <string name="AuthTAG" translatable="false">FireAuth Service</string>
@@ -21,6 +25,10 @@
     <string name="emptyFields" translatable="false">Do not leave empty fields</string>
     <string name="logOut" translatable="false">Log Out</string>
     <string name="Passwordthree" translatable="false">Next</string>
+    <string name="emailSuccess" translatable="false">Check email to reset your password!!</string>
+    <string name="emailError" translatable="false">Fail to send reset password email!</string>
+
+    <string name="edt" translatable="false">Profile Edit</string>
 
     <!--string translatable resources for NavBarMainActivity-->
     <string name="title_activity_nav_bar_main" translatable="false">NavBarMainActivity</string>
@@ -38,6 +46,8 @@
 
     <string name="Password" translatable="false">Recover Password</string>
     <string name="Passwordtwo" translatable="false">Recover</string>
+
+    <string name="update" translatable="false">Update</string>
 
     <!--string resources for NVMA/fragments -->
     <string name="fragment_filters" translatable="false">The filters and extras using openCV will go here</string>
